@@ -1,0 +1,5 @@
+.idea/
+*.iml
+src/main/resources/static
+src/main/resources/application-prod.yml
+target/

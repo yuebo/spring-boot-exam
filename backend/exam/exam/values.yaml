@@ -1,0 +1,28 @@
+# Default values for springboot-demoweb.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+image:
+  repository: mooncakexyb/exam
+  tag: 0.3
+  pullPolicy: IfNotPresent
+  profile: prod
+service:
+  name: web
+  internalPort: 8080
+datasource:
+  host: mysql-h8bumt
+  port: 3306
+  username: root
+  password: gf6O0jY1NJ
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+   limits:
+    cpu: 200m
+    memory: 512Mi
+   requests:
+    cpu: 200m
+    memory: 256Mi

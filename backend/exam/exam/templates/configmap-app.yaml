@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "app.fullname" . }}
+  labels:
+    app: {{ template "app.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+data:
+  application-{{ .Values.image.profile }}.yml: |-
+    spring:
+      datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: {{ .Values.datasource.username }}
+        password: {{ .Values.datasource.password }}
+        url: jdbc:mysql://{{ .Values.datasource.host }}:{{ .Values.datasource.port }}/exam?characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    interceptors:
+      auth-ignore-uris: /api/user/register,/api/user/login
+    user:
+      default:
+        username: user
+        avatar: http://d.lanrentuku.com/down/png/1904/business_avatar/8_avatar_2754583.png
